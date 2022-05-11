@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Art/Pixel Adventure 1/Background/Blue.png" type="Texture" id=1]
+[ext_resource path="res://Maps/pixel_adventure_terrain.tres" type="TileSet" id=2]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 583, -301 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 1000 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -458745, 0, 0, -458744, 0, 1, -458743, 0, 1, -458742, 0, 2, -393209, 0, 65536, -393208, 0, 65537, -393207, 0, 65537, -393206, 0, 65538, -327673, 0, 65536, -327672, 0, 65537, -327671, 0, 65537, -327670, 0, 65538, -262140, 0, 0, -262139, 0, 1, -262138, 0, 1, -262137, 0, 65540, -262136, 0, 65537, -262135, 0, 65537, -262134, 0, 65539, -262133, 0, 1, -262132, 0, 1, -262131, 0, 1, -262130, 0, 1, -262129, 0, 2, -196604, 0, 131072, -196603, 0, 131073, -196602, 0, 131073, -196601, 0, 131073, -196600, 0, 131073, -196599, 0, 4, -196598, 0, 3, -196597, 0, 131073, -196596, 0, 131073, -196595, 0, 131073, -196594, 0, 131073, -196593, 0, 131074, -131063, 0, 65536, -131062, 0, 65538, -65527, 0, 131072, -65526, 0, 131074 )
