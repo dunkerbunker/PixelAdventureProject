@@ -42,6 +42,10 @@ config/name="PixelAdventureProject"
 run/main_scene="res://Maps/Level1.tscn"
 config/icon="res://icon.png"
 
+[global]
+
+gravity=false
+
 [importer_defaults]
 
 texture={
