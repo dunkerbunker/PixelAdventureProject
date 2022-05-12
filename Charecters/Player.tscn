@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Wall Jump (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Double Jump (32x32).png" type="Texture" id=2]
@@ -99,31 +99,6 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 192, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 2 )
@@ -153,6 +128,31 @@ region = Rect2( 128, 0, 32, 32 )
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=30]
 flags = 4
@@ -226,11 +226,6 @@ animations = [ {
 "name": "hit",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "wall_jump",
-"speed": 20.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "jump",
@@ -239,6 +234,11 @@ animations = [ {
 "frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
 "loop": true,
 "name": "double_jump",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "wall_jump",
 "speed": 20.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -254,7 +254,147 @@ animations = [ {
 
 [sub_resource type="CapsuleShape2D" id=43]
 radius = 7.0
-height = 10.0
+height = 8.0
+
+[sub_resource type="Animation" id=44]
+resource_name = "double_jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "double_jump" ]
+}
+
+[sub_resource type="Animation" id=45]
+resource_name = "fall"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "fall" ]
+}
+
+[sub_resource type="Animation" id=46]
+resource_name = "hit"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "hit" ]
+}
+
+[sub_resource type="Animation" id=47]
+resource_name = "idle"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=48]
+resource_name = "jump"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "jump" ]
+}
+
+[sub_resource type="Animation" id=49]
+resource_name = "run"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+
+[sub_resource type="Animation" id=50]
+resource_name = "wall_jump"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "wall_jump" ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=54]
+blend_point_0/node = SubResource( 51 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 52 )
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource( 53 )
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlendTree" id=55]
+graph_offset = Vector2( -266.11, 57.75 )
+nodes/x_move/node = SubResource( 54 )
+nodes/x_move/position = Vector2( 0, 100 )
+node_connections = [ "output", 0, "x_move" ]
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 8 )
@@ -262,9 +402,23 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 42 )
 animation = "idle"
-frame = 8
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 5 )
 shape = SubResource( 43 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/double_jump = SubResource( 44 )
+anims/fall = SubResource( 45 )
+anims/hit = SubResource( 46 )
+anims/idle = SubResource( 47 )
+anims/jump = SubResource( 48 )
+anims/run = SubResource( 49 )
+anims/wall_jump = SubResource( 50 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 55 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/x_move/blend_position = 0
