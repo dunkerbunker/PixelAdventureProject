@@ -15,6 +15,7 @@ var velocity: Vector2
 
 var current_state = STATE.IDLE setget set_current_state
 var jumps = 0
+var has_double_jump_occured = false
 
 func _physics_process(delta):
 	var input = get_player_input()
@@ -44,6 +45,7 @@ func set_anim_parameters():
 func pick_next_state():
 	if (is_on_floor()):
 		jumps = 0
+		has_double_jump_occured = false
 		
 		#if jump is pressed when charecter is on the ground
 		if (Input.is_action_just_pressed("jump")):
@@ -55,7 +57,7 @@ func pick_next_state():
 	
 	else:
 		# to do double jump
-		if (Input.is_action_just_pressed("jump") && jumps < max_jumps):
+		if (Input.is_action_just_pressed("jump") && jumps < max_jumps && has_double_jump_occured == false):
 			self.current_state = STATE.DOUBLE_JUMP
 		
 # uses input to determine which directions the player is pressing down on for use in movement
@@ -74,9 +76,12 @@ func jump():
 # setters
 func set_current_state(new_state):
 	match(new_state):
-		STATE.JUMP, STATE.DOUBLE_JUMP:
+		STATE.JUMP:
 			jump()
-	
+		STATE.DOUBLE_JUMP:
+			jump()
+			animation_tree.set("parameters/double_jump/active", true)
+			has_double_jump_occured = true
 	current_state = new_state
 	emit_signal("changed_state",STATE.keys()[new_state] ,new_state)
 
