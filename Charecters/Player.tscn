@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Wall Jump (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Double Jump (32x32).png" type="Texture" id=2]
@@ -90,41 +90,6 @@ flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 128, 0, 32, 32 )
 
-[sub_resource type="AtlasTexture" id=12]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=13]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=14]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=15]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=16]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 160, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 192, 0, 32, 32 )
-
 [sub_resource type="AtlasTexture" id=30]
 flags = 4
 atlas = ExtResource( 6 )
@@ -185,6 +150,41 @@ flags = 4
 atlas = ExtResource( 6 )
 region = Rect2( 352, 0, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 32, 32 )
+
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 2 )
@@ -227,9 +227,9 @@ animations = [ {
 "name": "wall_jump",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
 "loop": true,
-"name": "jump",
+"name": "run",
 "speed": 20.0
 }, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
@@ -237,19 +237,19 @@ animations = [ {
 "name": "hit",
 "speed": 20.0
 }, {
+"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
+"loop": true,
+"name": "double_jump",
+"speed": 20.0
+}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "fall",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "run",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
-"loop": true,
-"name": "double_jump",
+"name": "jump",
 "speed": 20.0
 } ]
 
@@ -435,6 +435,9 @@ nodes/y_sign/node = SubResource( 58 )
 nodes/y_sign/position = Vector2( 20, 120 )
 node_connections = [ "output", 0, "double_jump", "double_jump", 0, "y_sign", "double_jump", 1, "Animation 3", "y_sign", 0, "Animation", "y_sign", 1, "x_sign", "y_sign", 2, "Animation 2" ]
 
+[sub_resource type="RectangleShape2D" id=61]
+extents = Vector2( 6.5, 0.5 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 8
 script = ExtResource( 8 )
@@ -442,7 +445,6 @@ script = ExtResource( 8 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 42 )
 animation = "idle"
-frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -475,4 +477,13 @@ text = "None"
 align = 1
 script = ExtResource( 9 )
 
+[node name="JumpHitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2048
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpHitbox"]
+position = Vector2( 0, 15.5 )
+shape = SubResource( 61 )
+
 [connection signal="changed_state" from="." to="StateLabel" method="_on_Player_changed_state"]
+[connection signal="area_shape_entered" from="JumpHitbox" to="." method="_on_JumpHitbox_area_shape_entered"]

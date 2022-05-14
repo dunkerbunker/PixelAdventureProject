@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Charecters/Enemies/AngryPig.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pixel Adventure 2/Enemies/AngryPig/Hit 1 (36x30).png" type="Texture" id=2]
@@ -271,7 +271,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=49]
-extents = Vector2( 10, 12.2471 )
+extents = Vector2( 10, 10.6496 )
 
 [sub_resource type="CapsuleShape2D" id=50]
 radius = 18.0
@@ -385,6 +385,9 @@ tracks/0/keys = {
 "values": [ "walk" ]
 }
 
+[sub_resource type="RectangleShape2D" id=61]
+extents = Vector2( 10, 0.5 )
+
 [node name="AngryPig" type="KinematicBody2D"]
 collision_layer = 16
 script = ExtResource( 1 )
@@ -393,11 +396,11 @@ faces_right = false
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 48 )
 animation = "walk"
-frame = 9
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 2.5 )
+position = Vector2( 0, 4.00001 )
 scale = Vector2( 1.193, 0.939 )
 shape = SubResource( 49 )
 
@@ -423,6 +426,15 @@ anims/hit2 = SubResource( 57 )
 anims/idle = SubResource( 58 )
 anims/run = SubResource( 59 )
 anims/walk = SubResource( 60 )
+
+[node name="JumpHurtbox" type="Area2D" parent="."]
+position = Vector2( 0, 12 )
+collision_layer = 2048
+collision_mask = 0
+
+[node name="JumpCollisionShape" type="CollisionShape2D" parent="JumpHurtbox"]
+position = Vector2( 0, -20 )
+shape = SubResource( 61 )
 
 [connection signal="body_shape_entered" from="AngryDetectionZone" to="." method="_on_AngryDetectionZone_body_shape_entered"]
 [connection signal="body_shape_exited" from="AngryDetectionZone" to="." method="_on_AngryDetectionZone_body_shape_exited"]

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Enemy
 
 enum STATE {WALK, RUN}
 
@@ -59,6 +59,9 @@ func _physics_process(delta):
 		else:
 			self.waypoint_index = 0
 		#switch waypoints
+		
+func _hit_animation_finished():
+	can_be_hit = true
 		
 func set_waypoint_index(value):
 	waypoint_index = value

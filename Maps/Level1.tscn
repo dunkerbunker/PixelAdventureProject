@@ -45,4 +45,8 @@ position = Vector2( 645, -250 )
 
 [node name="AngryPig" parent="." instance=ExtResource( 4 )]
 position = Vector2( 375, -190 )
+walk_speed = null
+run_speed = null
+waypoint_arrived_distance = null
 waypoints = [ NodePath("../Waypoints/Waypoint1"), NodePath("../Waypoints/Waypoint2") ]
+starting_waypoint = null
