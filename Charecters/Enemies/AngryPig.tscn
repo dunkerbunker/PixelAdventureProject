@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Charecters/Enemies/AngryPig.gd" type="Script" id=1]
 [ext_resource path="res://Art/Pixel Adventure 2/Enemies/AngryPig/Hit 1 (36x30).png" type="Texture" id=2]
@@ -51,6 +51,66 @@ region = Rect2( 252, 0, 36, 30 )
 flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 288, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=36]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=37]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 36, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=38]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 72, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=39]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 108, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=40]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 144, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=41]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 180, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=42]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 216, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=43]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 252, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=44]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 288, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=45]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 324, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=46]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 360, 0, 36, 30 )
+
+[sub_resource type="AtlasTexture" id=47]
+flags = 4
+atlas = ExtResource( 6 )
+region = Rect2( 396, 0, 36, 30 )
 
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
@@ -132,31 +192,6 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 540, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 36, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=28]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 72, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=29]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 108, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=30]
-flags = 4
-atlas = ExtResource( 2 )
-region = Rect2( 144, 0, 36, 30 )
-
 [sub_resource type="AtlasTexture" id=31]
 flags = 4
 atlas = ExtResource( 5 )
@@ -182,65 +217,30 @@ flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 144, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=26]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 2 )
 region = Rect2( 0, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=37]
+[sub_resource type="AtlasTexture" id=27]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 2 )
 region = Rect2( 36, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=28]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 2 )
 region = Rect2( 72, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=39]
+[sub_resource type="AtlasTexture" id=29]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 2 )
 region = Rect2( 108, 0, 36, 30 )
 
-[sub_resource type="AtlasTexture" id=40]
+[sub_resource type="AtlasTexture" id=30]
 flags = 4
-atlas = ExtResource( 6 )
+atlas = ExtResource( 2 )
 region = Rect2( 144, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=41]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 180, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=42]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 216, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=43]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 252, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=44]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 288, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=45]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 324, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=46]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 360, 0, 36, 30 )
-
-[sub_resource type="AtlasTexture" id=47]
-flags = 4
-atlas = ExtResource( 6 )
-region = Rect2( 396, 0, 36, 30 )
 
 [sub_resource type="SpriteFrames" id=48]
 animations = [ {
@@ -249,14 +249,14 @@ animations = [ {
 "name": "idle",
 "speed": 20.0
 }, {
+"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"loop": true,
+"name": "run",
+"speed": 20.0
+}, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "walk",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
-"loop": true,
-"name": "hit1",
 "speed": 20.0
 }, {
 "frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ) ],
@@ -264,26 +264,165 @@ animations = [ {
 "name": "hit2",
 "speed": 20.0
 }, {
-"frames": [ SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ) ],
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
 "loop": true,
-"name": "run",
+"name": "hit1",
 "speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=49]
 extents = Vector2( 10, 12.2471 )
 
+[sub_resource type="CapsuleShape2D" id=50]
+radius = 18.0
+height = 90.0
+
+[sub_resource type="AnimationNodeAnimation" id=51]
+animation = "walk"
+
+[sub_resource type="AnimationNodeAnimation" id=52]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=53]
+animation = "run"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id=54]
+blend_point_0/node = SubResource( 51 )
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource( 52 )
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource( 53 )
+blend_point_2/pos = -1.0
+
+[sub_resource type="AnimationNodeBlendTree" id=55]
+nodes/output/position = Vector2( 500, 80 )
+nodes/player_detected/node = SubResource( 54 )
+nodes/player_detected/position = Vector2( 220, 60 )
+node_connections = [ "output", 0, "player_detected" ]
+
+[sub_resource type="Animation" id=56]
+resource_name = "hit1"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "hit1" ]
+}
+
+[sub_resource type="Animation" id=57]
+resource_name = "hit2"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "hit2" ]
+}
+
+[sub_resource type="Animation" id=58]
+resource_name = "idle"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
+
+[sub_resource type="Animation" id=59]
+resource_name = "run"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "run" ]
+}
+
+[sub_resource type="Animation" id=60]
+resource_name = "walk"
+length = 0.05
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "walk" ]
+}
+
 [node name="AngryPig" type="KinematicBody2D"]
+collision_layer = 16
 script = ExtResource( 1 )
 faces_right = false
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 48 )
-animation = "idle"
-frame = 5
+animation = "walk"
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2.5 )
 scale = Vector2( 1.193, 0.939 )
 shape = SubResource( 49 )
+
+[node name="AngryDetectionZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AngryDetectionZone"]
+position = Vector2( 0, 1 )
+rotation = 1.5708
+shape = SubResource( 50 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 55 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/player_detected/blend_position = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/hit1 = SubResource( 56 )
+anims/hit2 = SubResource( 57 )
+anims/idle = SubResource( 58 )
+anims/run = SubResource( 59 )
+anims/walk = SubResource( 60 )
+
+[connection signal="body_shape_entered" from="AngryDetectionZone" to="." method="_on_AngryDetectionZone_body_shape_entered"]
+[connection signal="body_shape_exited" from="AngryDetectionZone" to="." method="_on_AngryDetectionZone_body_shape_exited"]
