@@ -60,8 +60,7 @@ func _physics_process(delta):
 			self.waypoint_index = 0
 		#switch waypoints
 		
-func _hit_animation_finished():
-	can_be_hit = true
+
 		
 func set_waypoint_index(value):
 	waypoint_index = value
