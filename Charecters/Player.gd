@@ -172,7 +172,8 @@ func _on_JumpHitbox_area_shape_entered(area_rid, area, area_shape_index, local_s
 	var enemy = area.owner
 	
 	if (enemy is Enemy && enemy.can_be_hit):
-		if (jump_hitbox.global_position.y < area.global_position.y):
+		# check if we are hitting enemy in right position and from right velocity
+		if (jump_hitbox.global_position.y < area.global_position.y - 1 && velocity.y > 0):
 			#jump attack
 			velocity.y = -enemy_bounce_impulse
 			enemy.get_hit (jump_damage)
