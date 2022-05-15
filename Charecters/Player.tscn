@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Wall Jump (32x32).png" type="Texture" id=1]
 [ext_resource path="res://Art/Pixel Adventure 1/Main Characters/Ninja Frog/Double Jump (32x32).png" type="Texture" id=2]
@@ -64,31 +64,6 @@ region = Rect2( 288, 0, 32, 32 )
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 320, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 64, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 96, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=23]
-flags = 4
-atlas = ExtResource( 1 )
-region = Rect2( 128, 0, 32, 32 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
@@ -215,6 +190,31 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 192, 0, 32, 32 )
 
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 128, 0, 32, 32 )
+
 [sub_resource type="SpriteFrames" id=42]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
@@ -222,14 +222,9 @@ animations = [ {
 "name": "idle",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "jump",
-"speed": 20.0
-}, {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
-"loop": true,
-"name": "wall_jump",
+"name": "fall",
 "speed": 20.0
 }, {
 "frames": [ SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ) ],
@@ -242,20 +237,24 @@ animations = [ {
 "name": "run",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "fall",
-"speed": 20.0
-}, {
 "frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "hit",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "jump",
+"speed": 20.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ) ],
+"loop": true,
+"name": "wall_slide",
+"speed": 20.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=43]
-radius = 7.0
-height = 8.0
+[sub_resource type="RectangleShape2D" id=66]
+extents = Vector2( 7, 10.5 )
 
 [sub_resource type="Animation" id=44]
 resource_name = "double_jump"
@@ -384,7 +383,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=50]
-resource_name = "wall_jump"
+resource_name = "wall_slide"
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimatedSprite:animation")
@@ -396,7 +396,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ "wall_jump" ]
+"values": [ "wall_slide" ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=56]
@@ -408,6 +408,9 @@ animation = "double_jump"
 [sub_resource type="AnimationNodeAnimation" id=62]
 animation = "hit"
 
+[sub_resource type="AnimationNodeAnimation" id=64]
+animation = "wall_slide"
+
 [sub_resource type="AnimationNodeAnimation" id=57]
 animation = "jump"
 
@@ -418,6 +421,8 @@ fadeout_time = 0.0
 [sub_resource type="AnimationNodeOneShot" id=63]
 fadein_time = 0.0
 fadeout_time = 0.0
+
+[sub_resource type="AnimationNodeBlend2" id=65]
 
 [sub_resource type="AnimationNodeAnimation" id=51]
 animation = "idle"
@@ -439,7 +444,7 @@ blend_point_2/pos = -1.0
 [sub_resource type="AnimationNodeBlend3" id=58]
 
 [sub_resource type="AnimationNodeBlendTree" id=55]
-graph_offset = Vector2( -211.733, 91.5 )
+graph_offset = Vector2( 254.422, 231 )
 nodes/Animation/node = SubResource( 57 )
 nodes/Animation/position = Vector2( -180, 40 )
 "nodes/Animation 2/node" = SubResource( 56 )
@@ -447,17 +452,21 @@ nodes/Animation/position = Vector2( -180, 40 )
 "nodes/Animation 3/node" = SubResource( 59 )
 "nodes/Animation 3/position" = Vector2( 100, 320 )
 "nodes/Animation 4/node" = SubResource( 62 )
-"nodes/Animation 4/position" = Vector2( 320, 340 )
+"nodes/Animation 4/position" = Vector2( 780, 320 )
+"nodes/Animation 5/node" = SubResource( 64 )
+"nodes/Animation 5/position" = Vector2( 400, 320 )
 nodes/double_jump/node = SubResource( 60 )
 nodes/double_jump/position = Vector2( 340, 100 )
 nodes/hit/node = SubResource( 63 )
-nodes/hit/position = Vector2( 540, 200 )
-nodes/output/position = Vector2( 740, 160 )
+nodes/hit/position = Vector2( 1000, 160 )
+nodes/is_on_wall/node = SubResource( 65 )
+nodes/is_on_wall/position = Vector2( 620, 120 )
+nodes/output/position = Vector2( 1260, 180 )
 nodes/x_sign/node = SubResource( 54 )
 nodes/x_sign/position = Vector2( -320, 160 )
 nodes/y_sign/node = SubResource( 58 )
 nodes/y_sign/position = Vector2( 20, 120 )
-node_connections = [ "output", 0, "hit", "double_jump", 0, "y_sign", "double_jump", 1, "Animation 3", "hit", 0, "double_jump", "hit", 1, "Animation 4", "y_sign", 0, "Animation", "y_sign", 1, "x_sign", "y_sign", 2, "Animation 2" ]
+node_connections = [ "output", 0, "hit", "is_on_wall", 0, "double_jump", "is_on_wall", 1, "Animation 5", "double_jump", 0, "y_sign", "double_jump", 1, "Animation 3", "hit", 0, "is_on_wall", "hit", 1, "Animation 4", "y_sign", 0, "Animation", "y_sign", 1, "x_sign", "y_sign", 2, "Animation 2" ]
 
 [sub_resource type="RectangleShape2D" id=61]
 extents = Vector2( 6.5, 0.5 )
@@ -470,12 +479,12 @@ health = 5.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 42 )
 animation = "idle"
-frame = 1
+frame = 9
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 5 )
-shape = SubResource( 43 )
+position = Vector2( 0, 4.5 )
+shape = SubResource( 66 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/double_jump = SubResource( 44 )
@@ -484,7 +493,7 @@ anims/hit = SubResource( 46 )
 anims/idle = SubResource( 47 )
 anims/jump = SubResource( 48 )
 anims/run = SubResource( 49 )
-anims/wall_jump = SubResource( 50 )
+anims/wall_slide = SubResource( 50 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 55 )
@@ -492,6 +501,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/double_jump/active = false
 parameters/hit/active = false
+parameters/is_on_wall/blend_amount = 0
 parameters/x_sign/blend_position = 0
 parameters/y_sign/blend_amount = 0
 
@@ -513,6 +523,10 @@ position = Vector2( 0, 15.5 )
 shape = SubResource( 61 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WallJumpTimer" type="Timer" parent="."]
+wait_time = 0.15
 one_shot = true
 
 [connection signal="changed_state" from="." to="StateLabel" method="_on_Player_changed_state"]
