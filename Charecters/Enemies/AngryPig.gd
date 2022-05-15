@@ -1,6 +1,6 @@
 extends Enemy
 
-enum STATE {WALK, RUN}
+enum STATE {WALK, RUN, HIT}
 
 export(float) var walk_speed = 100
 export(float) var run_speed = 200
@@ -60,18 +60,39 @@ func _physics_process(delta):
 			self.waypoint_index = 0
 		#switch waypoints
 		
+		
+func _on_AngryDetectionZone_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	animation_tree.set("parameters/player_detected/blend_position", 1)
+	if (current_state == STATE.WALK):
+		current_state = STATE.RUN
 
+
+func _on_AngryDetectionZone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
+	animation_tree.set("parameters/player_detected/blend_position", 0)
+	if (current_state == STATE.RUN):
+		current_state = STATE.WALK
+		
+func get_hit(damage: float):
+	self.health -= damage
+	
+	can_be_hit = false
+	current_state = STATE.HIT
+	
+	var anim_selection = GameSettings.RandGen.randi_range(0, 1)
+	
+	animation_tree.set("parameters/hit/active", true)
+	animation_tree.set("parameters/hit_variation/blend_amount", anim_selection)
+	
+func _hit_animation_finished():
+	can_be_hit = true
+	current_state = STATE.RUN
 		
 func set_waypoint_index(value):
 	waypoint_index = value
 	waypoint_position = get_node(waypoints[waypoint_index]).position
 
 
-func _on_AngryDetectionZone_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	animation_tree.set("parameters/player_detected/blend_position", 1)
-	current_state = STATE.RUN
 
 
-func _on_AngryDetectionZone_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
-	animation_tree.set("parameters/player_detected/blend_position", 0)
-	current_state = STATE.WALK
+
+

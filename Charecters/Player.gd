@@ -1,12 +1,12 @@
-extends KinematicBody2D
+extends "res://Charecters/Charecter.gd"
 
 export(float) var move_speed = 200
 export(float) var jump_impulse = 600
-export(float) var enemy_bounce_impulse = 400
+export(float) var enemy_bounce_impulse = 600
 export(int) var max_jumps = 2
 export(float) var jump_damage = 1
 
-enum STATE {IDLE, RUN, JUMP, DOUBLE_JUMP}
+enum STATE {IDLE, RUN, JUMP, DOUBLE_JUMP, HIT}
 
 onready var animated_sprite = $AnimatedSprite
 onready var animation_tree = $AnimationTree
@@ -85,6 +85,13 @@ func _on_JumpHitbox_area_shape_entered(area_rid, area, area_shape_index, local_s
 			velocity.y = -enemy_bounce_impulse
 			enemy.get_hit (jump_damage)
 
+func get_hit(damage: float):
+	self.health -= damage
+	self.current_state = STATE.HIT
+
+func on_hit_finished():
+	self.current_state  = STATE.IDLE
+
 # setters
 func set_current_state(new_state):
 	match(new_state):
@@ -94,6 +101,9 @@ func set_current_state(new_state):
 			jump()
 			animation_tree.set("parameters/double_jump/active", true)
 			has_double_jump_occured = true
+		STATE.HIT:
+			animation_tree.set("parameters/hit/active", true)
+		
 	current_state = new_state
 	emit_signal("changed_state",STATE.keys()[new_state] ,new_state)
 
