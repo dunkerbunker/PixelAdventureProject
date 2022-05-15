@@ -5,12 +5,14 @@ export(float) var jump_impulse = 600
 export(float) var enemy_bounce_impulse = 600
 export(int) var max_jumps = 2
 export(float) var jump_damage = 1
+export(float) var knockback_collision_speed = 100
 
 enum STATE {IDLE, RUN, JUMP, DOUBLE_JUMP, HIT}
 
 onready var animated_sprite = $AnimatedSprite
 onready var animation_tree = $AnimationTree
 onready var jump_hitbox = $JumpHitbox
+onready var invincible_timer = $InvincibleTimer
 
 signal changed_state(new_state_string, new_state_id)
 
@@ -22,17 +24,39 @@ var has_double_jump_occured = false
 
 func _physics_process(delta):
 	var input = get_player_input()
-	adjust_flip_direction(input)
-	
-	velocity = Vector2(
-		input.x * move_speed,
-		min(velocity.y + GameSettings.gravity, GameSettings.terminal_velocity)
-	)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	set_anim_parameters()
-	pick_next_state()
 	
+	match (current_state):
+		STATE.IDLE, STATE.JUMP, STATE.RUN, STATE.DOUBLE_JUMP:
+			velocity = normal_move(input)
+			pick_next_state()
+		STATE.HIT:
+			velocity = hit_move()
+	
+	
+func normal_move(input):
+	adjust_flip_direction(input)
+	return Vector2(
+		input.x * move_speed,
+		min(velocity.y + GameSettings.gravity, GameSettings.terminal_velocity)
+	)
+
+# knockback after hit	
+func hit_move():
+	var knockback_direction : Vector2
+	
+	# facing left
+	if (animated_sprite.flip_h):
+		knockback_direction = Vector2.RIGHT
+	else:
+		knockback_direction = Vector2.LEFT
+	
+	knockback_direction = knockback_direction.normalized()
+	
+	return knockback_collision_speed * knockback_direction
+
 func adjust_flip_direction(input : Vector2):
 	if (sign(input.x) == 1):
 		animated_sprite.flip_h = false
@@ -86,8 +110,11 @@ func _on_JumpHitbox_area_shape_entered(area_rid, area, area_shape_index, local_s
 			enemy.get_hit (jump_damage)
 
 func get_hit(damage: float):
-	self.health -= damage
-	self.current_state = STATE.HIT
+	if (invincible_timer.is_stopped()):
+		self.health -= damage
+		self.current_state = STATE.HIT
+		invincible_timer.start()
+	
 
 func on_hit_finished():
 	self.current_state  = STATE.IDLE
