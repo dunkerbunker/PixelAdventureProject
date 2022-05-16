@@ -16,6 +16,7 @@ onready var animation_tree = $AnimationTree
 onready var jump_hitbox = $JumpHitbox
 onready var invincible_timer = $InvincibleTimer
 onready var wall_jump_timer = $WallJumpTimer
+onready var drop_timer = $DropTimer
 
 signal changed_state(new_state_string, new_state_id)
 
@@ -29,6 +30,12 @@ var wall_jump_direction : Vector2
 
 func _physics_process(delta):
 	var input = get_player_input()
+	
+	if(Input.is_action_just_pressed("down")):
+		if(drop_timer.is_stopped()):
+			drop_timer.start()
+		else:
+			drop()
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
@@ -167,16 +174,23 @@ func wall_jump():
 	jumps = 1
 	wall_jump_direction = -get_facing_direction()
 	wall_jump_timer.start()
+
+func drop():
+	position.y += 1
 	
 func _on_JumpHitbox_area_shape_entered(area_rid, area, area_shape_index, local_shape_index):
 	var enemy = area.owner
 	
 	if (enemy is Enemy && enemy.can_be_hit):
 		# check if we are hitting enemy in right position and from right velocity
-		if (jump_hitbox.global_position.y < area.global_position.y - 1 && velocity.y > 0):
+		if (velocity.y > 0):
 			#jump attack
 			velocity.y = -enemy_bounce_impulse
 			enemy.get_hit (jump_damage)
+
+func die():
+	emit_signal("player_died", self)
+	queue_free()
 
 func get_hit(damage: float):
 	if (invincible_timer.is_stopped()):

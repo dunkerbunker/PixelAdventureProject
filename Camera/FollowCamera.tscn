@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Camera/FollowCamera.gd" type="Script" id=1]
+
+[node name="FollowCamera" type="Camera2D"]
+current = true
+zoom = Vector2( 0.5, 0.5 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+script = ExtResource( 1 )
+
+[node name="Bounds" type="Node" parent="."]
+
+[node name="TopLeft" type="Position2D" parent="Bounds"]
+position = Vector2( -289, -172 )
+rotation = 3.12685
+
+[node name="BottomRight" type="Position2D" parent="Bounds"]
+position = Vector2( 298, 171 )
