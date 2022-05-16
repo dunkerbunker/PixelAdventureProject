@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Art/Pixel Adventure 1/Background/Yellow.png" type="Texture" id=1]
+[ext_resource path="res://Maps/pixel_adventure_terrain.tres" type="TileSet" id=2]
+[ext_resource path="res://Charecters/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Camera/FollowCamera.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Zones/BottomOfScreen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Zones/BottomOfScreen.gd" type="Script" id=7]
+
+[node name="Level1" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 583, -301 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 1000 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -655352, 10, 0, -655351, 10, 1, -655350, 10, 0, -655349, 10, 0, -655348, 10, 0, -655347, 10, 0, -655346, 10, 0, -655345, 10, 0, -655344, 10, 0, -655343, 10, 0, -655342, 10, 2, -589814, 10, 131073, -589813, 10, 0, -589812, 10, 0, -589811, 10, 0, -589810, 10, 0, -589809, 10, 0, -589808, 10, 0, -589807, 10, 131074, -393186, 10, 65537, -393185, 10, 0, -393184, 10, 0, -393183, 10, 0, -393182, 10, 0, -393181, 10, 0, -393180, 10, 0, -393179, 10, 0, -393178, 10, 65538, -327650, 10, 131073, -327649, 10, 0, -327648, 10, 0, -327647, 10, 0, -327646, 10, 0, -327645, 10, 0, -327644, 10, 0, -327643, 10, 0, -327642, 10, 0, -327641, 10, 0, -327640, 10, 0, -327639, 10, 0, -327638, 10, 0, -327637, 10, 0, -327636, 10, 0, -327635, 10, 65538, -262112, 10, 131073, -262111, 10, 0, -262110, 10, 0, -262109, 10, 0, -262108, 10, 0, -262107, 10, 0, -262106, 10, 0, -262105, 10, 0, -262104, 10, 0, -262103, 10, 0, -262102, 10, 0, -262101, 10, 0, -262100, 10, 0, -262099, 10, 0, -262098, 10, 1, -262097, 10, 1, -262096, 10, 0, -262095, 10, 0, -262094, 10, 0, -262093, 10, 0, -262092, 10, 0, -262091, 10, 65538, -196575, 10, 131073, -196574, 10, 131074, -196560, 10, 131073, -196559, 10, 0, -196558, 10, 0, -196557, 10, 0, -196556, 10, 0, -196555, 10, 0, -196554, 10, 2 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 215, -184 )
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../FollowCamera")
+
+[node name="FollowCamera" parent="." instance=ExtResource( 5 )]
+position = Vector2( 215, -184 )
+
+[node name="TopLeft" parent="FollowCamera/Bounds" index="0"]
+position = Vector2( -17, -736 )
+
+[node name="BottomRight" parent="FollowCamera/Bounds" index="1"]
+position = Vector2( 960, 199 )
+
+[node name="Waypoints" type="Node2D" parent="."]
+
+[node name="Waypoint1" type="Position2D" parent="Waypoints"]
+position = Vector2( 24, 160 )
+
+[node name="Waypoint2" type="Position2D" parent="Waypoints"]
+position = Vector2( 216, 160 )
+
+[node name="Waypoint3" type="Position2D" parent="Waypoints"]
+position = Vector2( 712, 68 )
+
+[node name="Waypoint4" type="Position2D" parent="Waypoints"]
+position = Vector2( 840, 68 )
+
+[node name="BottomOfScreen" parent="." instance=ExtResource( 6 )]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+script = ExtResource( 7 )
+
+[connection signal="body_shape_entered" from="BottomOfScreen" to="BottomOfScreen" method="_on_BottomOfScreen_body_shape_entered"]
+
+[editable path="FollowCamera"]
