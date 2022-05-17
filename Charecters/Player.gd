@@ -19,6 +19,7 @@ onready var wall_jump_timer = $WallJumpTimer
 onready var drop_timer = $DropTimer
 
 signal changed_state(new_state_string, new_state_id)
+signal player_died
 
 var velocity: Vector2
 
@@ -197,6 +198,7 @@ func get_hit(damage: float):
 		self.health -= damage
 		self.current_state = STATE.HIT
 		invincible_timer.start()
+
 	
 
 func on_hit_finished():
